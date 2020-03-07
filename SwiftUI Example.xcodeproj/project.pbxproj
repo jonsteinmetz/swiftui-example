@@ -13,6 +13,7 @@
 		BC92043424141E5C00BC7CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC92043324141E5C00BC7CB2 /* Assets.xcassets */; };
 		BC92043724141E5C00BC7CB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC92043624141E5C00BC7CB2 /* Preview Assets.xcassets */; };
 		BC92043A24141E5C00BC7CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC92043824141E5C00BC7CB2 /* LaunchScreen.storyboard */; };
+		BC9204462414216900BC7CB2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9204452414216900BC7CB2 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BC92043624141E5C00BC7CB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC92043924141E5C00BC7CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC92043B24141E5C00BC7CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC9204452414216900BC7CB2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				BC92042D24141E5A00BC7CB2 /* AppDelegate.swift */,
-				BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */,
-				BC92043124141E5A00BC7CB2 /* ContentView.swift */,
 				BC92043324141E5C00BC7CB2 /* Assets.xcassets */,
 				BC92043824141E5C00BC7CB2 /* LaunchScreen.storyboard */,
+				BC92043124141E5A00BC7CB2 /* ContentView.swift */,
 				BC92043B24141E5C00BC7CB2 /* Info.plist */,
+				BC9204452414216900BC7CB2 /* MainView.swift */,
 				BC92043524141E5C00BC7CB2 /* Preview Content */,
+				BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */,
 			);
 			path = "SwiftUI Example";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC92042E24141E5A00BC7CB2 /* AppDelegate.swift in Sources */,
+				BC9204462414216900BC7CB2 /* MainView.swift in Sources */,
 				BC92043024141E5A00BC7CB2 /* SceneDelegate.swift in Sources */,
 				BC92043224141E5A00BC7CB2 /* ContentView.swift in Sources */,
 			);
