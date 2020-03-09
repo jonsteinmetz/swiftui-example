@@ -13,7 +13,12 @@ struct MainView: View {
         NavigationView {
         	Form {
         		Section(header: Text("Photos")) {
-        			NavigationLink("In UICollectionView", destination: ContentView())
+        			NavigationLink(
+        				"Photos in UICollectionView",
+        				destination: PhotosCollectionView(store: makePhotosCollectionViewStore())
+        					.navigationBarTitle("Photos")
+					)
+        			NavigationLink("Photos in SwiftUI", destination: ContentView())
 				}
 			}.navigationBarTitle("SwiftUI")
 		}
