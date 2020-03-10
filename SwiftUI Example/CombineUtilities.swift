@@ -95,3 +95,31 @@ extension Publisher where Failure == Never {
 			.sink { on[keyPath: to] = $0 }
 	}
 }
+
+public protocol OptionalType {
+	associatedtype Wrapped
+	var value: Wrapped? { get }
+}
+
+extension Optional: OptionalType {
+	/// Cast `Optional<Wrapped>` to `Wrapped?`
+	public var value: Wrapped? {
+		return self
+	}
+}
+
+public extension Publisher where Self.Output: OptionalType {
+	func filterNil() -> AnyPublisher<Self.Output.Wrapped, Self.Failure> {
+		return self.flatMap { element -> AnyPublisher<Self.Output.Wrapped, Self.Failure> in
+			guard let value = element.value else {
+				return Empty(completeImmediately: false)
+					.setFailureType(to: Self.Failure.self)
+					.eraseToAnyPublisher()
+			}
+			return Just(value)
+				.setFailureType(to: Self.Failure.self)
+				.eraseToAnyPublisher()
+		}
+			.eraseToAnyPublisher()
+	}
+}

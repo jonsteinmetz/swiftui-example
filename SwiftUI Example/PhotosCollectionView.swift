@@ -59,11 +59,30 @@ struct PhotosCollectionView: UIViewRepresentable {
 private let photoCellReuseIdentifier = "PhotoCell"
 private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath,
 		item: PHAsset) -> UICollectionViewCell? {
-	let cell = collectionView.dequeueReusableCell(
+	guard let cell = collectionView.dequeueReusableCell(
 		withReuseIdentifier: photoCellReuseIdentifier,
 		for: indexPath
-	)
+	) as? PhotoCell else { return nil }
 	cell.cancelSet = []
+	
+	let store = makePhotoCellStore(
+		photoLibrary: PHPhotoLibrary.shared(),
+		imageManager: PHImageManager.default(),
+		photo: item
+	)
+	store.$value
+		.sink { [weak cell] state in
+			cell?.imageView.image = state.image
+		}
+		.store(in: &cell.cancelSet)
+	cell.publisher(for: \.bounds)
+		.sink { [weak cell] bounds in
+			// Note that the strong ref to store ties the lifetime to cancelSet
+			let scale = cell?.contentScaleFactor ?? 1.0
+			let size = CGSize(width: bounds.size.width * scale, height: bounds.size.height * scale)
+			store.send(.sizeChanged(size))
+		}
+		.store(in: &cell.cancelSet)
 	
 	return cell
 }

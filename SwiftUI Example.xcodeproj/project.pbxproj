@@ -20,6 +20,7 @@
 		BC98AFF12415B5B900608109 /* PhotosCollectionViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF02415B5B900608109 /* PhotosCollectionViewState.swift */; };
 		BC98AFF32415BD2600608109 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF22415BD2600608109 /* PhotoCell.swift */; };
 		BC98AFF52415C52C00608109 /* PhotosUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF42415C52C00608109 /* PhotosUtilities.swift */; };
+		BC98AFF724173D1E00608109 /* PhotoCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF624173D1E00608109 /* PhotoCellState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BC98AFF02415B5B900608109 /* PhotosCollectionViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewState.swift; sourceTree = "<group>"; };
 		BC98AFF22415BD2600608109 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		BC98AFF42415C52C00608109 /* PhotosUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUtilities.swift; sourceTree = "<group>"; };
+		BC98AFF624173D1E00608109 /* PhotoCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				BC92043824141E5C00BC7CB2 /* LaunchScreen.storyboard */,
 				BC9204452414216900BC7CB2 /* MainView.swift */,
 				BC98AFF22415BD2600608109 /* PhotoCell.swift */,
+				BC98AFF624173D1E00608109 /* PhotoCellState.swift */,
 				BC98AFEE24157C2700608109 /* PhotosCollectionView.swift */,
 				BC98AFF02415B5B900608109 /* PhotosCollectionViewState.swift */,
 				BC98AFF42415C52C00608109 /* PhotosUtilities.swift */,
@@ -173,6 +176,7 @@
 				BC9204462414216900BC7CB2 /* MainView.swift in Sources */,
 				BC92043024141E5A00BC7CB2 /* SceneDelegate.swift in Sources */,
 				BC920443241420CF00BC7CB2 /* CombineUtilities.swift in Sources */,
+				BC98AFF724173D1E00608109 /* PhotoCellState.swift in Sources */,
 				BC92043224141E5A00BC7CB2 /* ContentView.swift in Sources */,
 				BC98AFF52415C52C00608109 /* PhotosUtilities.swift in Sources */,
 				BC920444241420CF00BC7CB2 /* ReducerArchitecture.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Combine
 import Photos
+import UIKit
 
 extension PHPhotoLibrary {
 	func fetchAssets(withType type: PHAssetMediaType, options: PHFetchOptions? = nil)
@@ -30,6 +31,40 @@ extension PHPhotoLibrary {
 			.handleEvents(receiveCompletion: { _ in
 				// This ties the lifetime of the observer to the subscription.
 				_ = observer
+			})
+			.eraseToAnyPublisher()
+	}
+}
+
+extension PHImageManager {
+	func requestImage( forAsset asset: PHAsset, targetSize: CGSize,
+			contentMode: PHImageContentMode, options: PHImageRequestOptions?)
+			-> AnyPublisher<UIImage, NSError> {
+		let subject = CurrentValueSubject<UIImage?, NSError>(nil)
+		let requestID = self.requestImage(for: asset, targetSize: targetSize,
+				contentMode: contentMode, options: options) { (image, info) in
+			if let image = image {
+				subject.send(image)
+			}
+			if let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool,
+					isDegraded == false {
+				subject.send(completion: .finished)
+				return
+			}
+			if let error = info?[PHImageErrorKey] as? NSError {
+				subject.send(completion: .failure(error))
+				return
+			}
+			if let cancelled = info?[PHImageCancelledKey] as? NSNumber,
+					cancelled.boolValue {
+				subject.send(completion: .finished)
+				return
+			}
+		}
+		return subject
+			.compactMap { $0 }
+			.handleEvents(receiveCompletion: { [weak self] completion in
+				self?.cancelImageRequest(requestID)
 			})
 			.eraseToAnyPublisher()
 	}

@@ -20,7 +20,7 @@ class PhotoCell: UICollectionViewCell {
     	imageView.translatesAutoresizingMaskIntoConstraints = false
     	imageView.contentMode = .scaleAspectFill
     	imageView.clipsToBounds = true
-    	imageView.backgroundColor = .systemGray
+    	imageView.backgroundColor = .systemGray2
     	NSLayoutConstraint.activate([
     		imageView.leftAnchor.constraint(equalTo: self.leftAnchor),
     		imageView.topAnchor.constraint(equalTo: self.topAnchor),

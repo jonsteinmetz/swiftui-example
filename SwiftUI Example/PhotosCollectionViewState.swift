@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Foundation
+import UIKit
 import Photos
 
 struct PhotosCollectionViewState {
@@ -17,7 +17,6 @@ struct PhotosCollectionViewState {
 		case photosUpdated([PHAsset])
 	}
 	enum Effect {
-		
 	}
 }
 
@@ -55,6 +54,7 @@ func makePhotosCollectionViewStore() -> PhotosCollectionViewStore {
 	let library = PHPhotoLibrary.shared()
 	library.fetchAssets(withType: .image)
 		.map { $0.objects(at: IndexSet(integersIn: 0..<$0.count)) }
+		.receive(on: RunLoop.main)
 		.sink { [weak store] assets in store?.send(.photosUpdated(assets)) }
 		.store(in: &store.cancelSet)
 	return store
