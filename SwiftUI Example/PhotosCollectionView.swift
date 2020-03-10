@@ -63,8 +63,8 @@ private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath
 		withReuseIdentifier: photoCellReuseIdentifier,
 		for: indexPath
 	) as? PhotoCell else { return nil }
-	cell.cancelSet = []
 	
+	cell.cancelSet = []
 	let store = makePhotoCellStore(
 		photoLibrary: PHPhotoLibrary.shared(),
 		imageManager: PHImageManager.default(),

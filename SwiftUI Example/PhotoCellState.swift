@@ -34,6 +34,7 @@ func photoCellReducer(state: inout PhotoCellState,
 	var effects = [PhotoCellState.Effect]()
 	switch action {
 		case .sizeChanged(let newSize):
+			guard newSize != .zero else { break }
 			effects.append(.requestImage(state.photo, newSize))
 		case .imageRequestResponse(let image):
 			state.image = image
@@ -62,12 +63,8 @@ func makePhotoCellStore(photoLibrary: PHPhotoLibrary,
 
 	requestSubject
 		.map { (photo, size) -> AnyPublisher<UIImage, Never> in
-			return imageManager.requestImage(
-				forAsset: photo,
-				targetSize: size,
-				contentMode: .aspectFill,
-				options: nil
-			)
+			return imageManager.requestImage(forAsset: photo, targetSize: size,
+					contentMode: .aspectFill, options: nil)
 				.catch { _ in Empty() }
 				.eraseToAnyPublisher()
 		}
