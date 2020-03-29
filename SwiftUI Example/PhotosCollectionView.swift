@@ -10,18 +10,21 @@ import Photos
 import SwiftUI
 import UIKit
 
-struct PhotosCollectionView: UIViewRepresentable {
+struct PhotosCollectionView: UIViewControllerRepresentable {
 	@ObservedObject var store: PhotosCollectionViewStore
 	
 	init(store: PhotosCollectionViewStore) {
     	self.store = store
 	}
 	
-	func makeUIView(context: UIViewRepresentableContext<PhotosCollectionView>)
-			-> UICollectionView {
+	func makeUIViewController(context: UIViewControllerRepresentableContext<PhotosCollectionView>)
+			-> UICollectionViewController {
 		let coordinator = context.coordinator
-		let layout = UICollectionViewFlowLayout()
-		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+		let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+		let result = SpecialViewController(collectionViewLayout: layout)
+		let store = self.store
+		result.viewDidAppearCallback = { store.send(.viewDidAppear) }
+		guard let collectionView = result.collectionView else { return result }
 		collectionView.allowsSelection = false
 		collectionView.alwaysBounceVertical = true
 		collectionView.backgroundColor = .systemBackground
@@ -32,10 +35,10 @@ struct PhotosCollectionView: UIViewRepresentable {
 			cellProvider: cellProvider
 		)
 		coordinator.dataSource = dataSource
-		return collectionView
+		return result
 	}
 	
-	func updateUIView(_ uiView: UICollectionView, context: UIViewRepresentableContext<PhotosCollectionView>) {
+    func updateUIViewController(_ uiViewController: UICollectionViewController, context: Self.Context) {
 		guard let dataSource = context.coordinator.dataSource else { return }
 		var snapshot = NSDiffableDataSourceSnapshot<Section, PHAsset>()
 		snapshot.appendSections([.main])
@@ -85,4 +88,22 @@ private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath
 		.store(in: &cell.cancelSet)
 	
 	return cell
+}
+
+private func sectionProvider(section: Int, environment: NSCollectionLayoutEnvironment)
+		-> NSCollectionLayoutSection? {
+	let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+	let item = NSCollectionLayoutItem(layoutSize: itemSize)
+	let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+	let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+	return NSCollectionLayoutSection(group: group)
+}
+
+private class SpecialViewController: UICollectionViewController {
+	var viewDidAppearCallback: (() -> Void)?
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		viewDidAppearCallback?()
+	}
 }

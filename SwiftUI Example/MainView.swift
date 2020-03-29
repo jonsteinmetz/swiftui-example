@@ -15,8 +15,9 @@ struct MainView: View {
         		Section(header: Text("Photos")) {
         			NavigationLink(
         				"Photos in UICollectionView",
-        				destination: PhotosCollectionView(store: makePhotosCollectionViewStore())
+        				destination: LazyView(PhotosCollectionView(store: makePhotosCollectionViewStore()))
         					.navigationBarTitle("Photos")
+        					.edgesIgnoringSafeArea(.all)
 					)
         			NavigationLink("Photos in SwiftUI", destination: ContentView())
 				}

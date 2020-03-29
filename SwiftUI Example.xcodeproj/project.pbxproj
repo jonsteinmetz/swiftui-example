@@ -21,6 +21,7 @@
 		BC98AFF32415BD2600608109 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF22415BD2600608109 /* PhotoCell.swift */; };
 		BC98AFF52415C52C00608109 /* PhotosUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF42415C52C00608109 /* PhotosUtilities.swift */; };
 		BC98AFF724173D1E00608109 /* PhotoCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC98AFF624173D1E00608109 /* PhotoCellState.swift */; };
+		BCD6EE77243103DF002643D7 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD6EE76243103DF002643D7 /* LazyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BC98AFF22415BD2600608109 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		BC98AFF42415C52C00608109 /* PhotosUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUtilities.swift; sourceTree = "<group>"; };
 		BC98AFF624173D1E00608109 /* PhotoCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellState.swift; sourceTree = "<group>"; };
+		BCD6EE76243103DF002643D7 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				BC92043524141E5C00BC7CB2 /* Preview Content */,
 				BC920442241420CF00BC7CB2 /* ReducerArchitecture.swift */,
 				BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */,
+				BCD6EE76243103DF002643D7 /* LazyView.swift */,
 			);
 			path = "SwiftUI Example";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD6EE77243103DF002643D7 /* LazyView.swift in Sources */,
 				BC92042E24141E5A00BC7CB2 /* AppDelegate.swift in Sources */,
 				BC98AFF32415BD2600608109 /* PhotoCell.swift in Sources */,
 				BC98AFEF24157C2700608109 /* PhotosCollectionView.swift in Sources */,
