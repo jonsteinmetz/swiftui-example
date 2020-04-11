@@ -42,7 +42,9 @@ extension PHPhotoLibrary {
 	func requestAuthorization() -> AnyPublisher<PHAuthorizationStatus, Never> {
 		let subject = PassthroughSubject<PHAuthorizationStatus, Never>()
 		PHPhotoLibrary.requestAuthorization { status in
-			subject.send(status)
+			DispatchQueue.main.async {
+				subject.send(status)
+			}
 		}
 		return subject.eraseToAnyPublisher()
 	}
@@ -88,22 +90,24 @@ extension PHImageManager {
 						guard requestID == nil else { return }
 						requestID = self.requestImage(for: asset, targetSize: targetSize,
 								contentMode: contentMode, options: options) { (image, info) in
-							if let image = image {
-								subject.send(image)
-							}
-							if let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool,
-									isDegraded == false {
-								subject.send(completion: .finished)
-								return
-							}
-							if let error = info?[PHImageErrorKey] as? NSError {
-								subject.send(completion: .failure(error))
-								return
-							}
-							if let cancelled = info?[PHImageCancelledKey] as? NSNumber,
-									cancelled.boolValue {
-								subject.send(completion: .finished)
-								return
+							DispatchQueue.main.async {
+								if let image = image {
+									subject.send(image)
+								}
+								if let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool,
+										isDegraded == false {
+									subject.send(completion: .finished)
+									return
+								}
+								if let error = info?[PHImageErrorKey] as? NSError {
+									subject.send(completion: .failure(error))
+									return
+								}
+								if let cancelled = info?[PHImageCancelledKey] as? NSNumber,
+										cancelled.boolValue {
+									subject.send(completion: .finished)
+									return
+								}
 							}
 						}
 					}
@@ -135,6 +139,8 @@ private class PhotoLibraryChangeObserver: NSObject, PHPhotoLibraryChangeObserver
 	}
 	
 	func photoLibraryDidChange(_ changeInstance: PHChange) {
-		changes.send(changeInstance)
+		DispatchQueue.main.async {
+			self.changes.send(changeInstance)
+		}
 	}
 }
