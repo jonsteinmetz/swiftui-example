@@ -12,14 +12,22 @@ struct MainView: View {
     var body: some View {
         NavigationView {
         	Form {
-        		Section(header: Text("Photos")) {
+        		Section(header: Text("Photos in UICollectionView")) {
         			NavigationLink(
         				"Photos in UICollectionView",
-        				destination: LazyView(PhotosCollectionView(store: makePhotosCollectionViewStore()))
+        				destination: LazyView(
+        					PhotosCollectionView(store: makePhotosCollectionViewStore())
+						)
         					.navigationBarTitle("Photos")
         					.edgesIgnoringSafeArea(.all)
 					)
-        			NavigationLink("Photos in SwiftUI", destination: ContentView())
+        			NavigationLink(
+        				"Photos in SwiftUI",
+        				destination: LazyView(
+        					PhotosSwiftUIView(store: makePhotosCollectionViewStore())
+						)
+        					.navigationBarTitle("Photos in SwiftUI")
+					)
 				}
 			}.navigationBarTitle("SwiftUI")
 		}

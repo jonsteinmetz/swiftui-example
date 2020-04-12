@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC4E99B32442549400736359 /* PhotosSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E99B22442549400736359 /* PhotosSwiftUIView.swift */; };
 		BC92042E24141E5A00BC7CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC92042D24141E5A00BC7CB2 /* AppDelegate.swift */; };
 		BC92043024141E5A00BC7CB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */; };
 		BC92043224141E5A00BC7CB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC92043124141E5A00BC7CB2 /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC4E99B22442549400736359 /* PhotosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSwiftUIView.swift; sourceTree = "<group>"; };
 		BC92042A24141E5A00BC7CB2 /* SwiftUI Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC92042D24141E5A00BC7CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,16 +82,17 @@
 				BC92043124141E5A00BC7CB2 /* ContentView.swift */,
 				BC92043B24141E5C00BC7CB2 /* Info.plist */,
 				BC92043824141E5C00BC7CB2 /* LaunchScreen.storyboard */,
+				BCD6EE76243103DF002643D7 /* LazyView.swift */,
 				BC9204452414216900BC7CB2 /* MainView.swift */,
 				BC98AFF22415BD2600608109 /* PhotoCell.swift */,
 				BC98AFF624173D1E00608109 /* PhotoCellState.swift */,
 				BC98AFEE24157C2700608109 /* PhotosCollectionView.swift */,
 				BC98AFF02415B5B900608109 /* PhotosCollectionViewState.swift */,
+				BC4E99B22442549400736359 /* PhotosSwiftUIView.swift */,
 				BC98AFF42415C52C00608109 /* PhotosUtilities.swift */,
 				BC92043524141E5C00BC7CB2 /* Preview Content */,
 				BC920442241420CF00BC7CB2 /* ReducerArchitecture.swift */,
 				BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */,
-				BCD6EE76243103DF002643D7 /* LazyView.swift */,
 			);
 			path = "SwiftUI Example";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				BC920443241420CF00BC7CB2 /* CombineUtilities.swift in Sources */,
 				BC98AFF724173D1E00608109 /* PhotoCellState.swift in Sources */,
 				BC92043224141E5A00BC7CB2 /* ContentView.swift in Sources */,
+				BC4E99B32442549400736359 /* PhotosSwiftUIView.swift in Sources */,
 				BC98AFF52415C52C00608109 /* PhotosUtilities.swift in Sources */,
 				BC920444241420CF00BC7CB2 /* ReducerArchitecture.swift in Sources */,
 				BC98AFF12415B5B900608109 /* PhotosCollectionViewState.swift in Sources */,
