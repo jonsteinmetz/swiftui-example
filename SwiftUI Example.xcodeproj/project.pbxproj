@@ -27,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		BC4E99B22442549400736359 /* PhotosSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSwiftUIView.swift; sourceTree = "<group>"; };
+		BC4E99B62447812100736359 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BC92042A24141E5A00BC7CB2 /* SwiftUI Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC92042D24141E5A00BC7CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC92042F24141E5A00BC7CB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		BC92042124141E5900BC7CB2 = {
 			isa = PBXGroup;
 			children = (
+				BC4E99B62447812100736359 /* README.md */,
 				BC92042C24141E5A00BC7CB2 /* SwiftUI Example */,
 				BC92042B24141E5A00BC7CB2 /* Products */,
 			);
