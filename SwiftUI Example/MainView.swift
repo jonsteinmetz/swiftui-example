@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct MainView: View {
+	@State var showNotes: Bool = false
+	@State var showDialog: Bool = false
+	@State var showActionSheet: Bool = false
+	
     var body: some View {
         NavigationView {
         	Form {
@@ -29,7 +33,36 @@ struct MainView: View {
         					.navigationBarTitle("Photos in SwiftUI")
 					)
 				}
-			}.navigationBarTitle("SwiftUI")
+				Section(header: Text("Dynamic Contents")) {
+					Toggle(isOn: $showNotes) {
+						Text("Show Notes")
+					}
+					if showNotes {
+						Text("This is an example of some kind of really long text that you might want to show in specific situations.")
+							.font(.footnote)
+							.foregroundColor(.gray)
+					}
+				}
+				Section(header: Text("Dialog")) {
+					Button(action: { self.showDialog = true }, label: { Text("Show Alert") })
+					Button(action: { self.showActionSheet = true }, label: { Text("Show Action Sheet") })
+				}
+			}
+				.navigationBarTitle("SwiftUI")
+				.alert(isPresented: $showDialog) {
+					Alert(title: Text("Boo!"))
+				}
+				.actionSheet(isPresented: $showActionSheet) {
+					ActionSheet(
+						title: Text("Action Sheet"),
+						message: Text("This is an example action sheet"),
+						buttons: [
+							.default(Text("Hi there")),
+							.destructive(Text("Boom")),
+							.cancel()
+						]
+					)
+				}
 		}
     }
 }
